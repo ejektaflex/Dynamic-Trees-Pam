@@ -6,6 +6,9 @@ import com.ferreusveritas.dynamictrees.api.worldgen.BiomePropertySelectors.EnumC
 import com.ferreusveritas.dynamictrees.api.worldgen.BiomePropertySelectors.StaticSpeciesSelector
 import com.ferreusveritas.dynamictrees.worldgen.BiomeDataBase.Operation
 import com.ferreusveritas.dynamictrees.worldgen.TreeGenerator
+import com.ferreusveritas.exampletrees.categories.ModBlocks
+import com.ferreusveritas.exampletrees.categories.ModItems
+import com.ferreusveritas.exampletrees.categories.ModTrees
 import com.ferreusveritas.exampletrees.proxy.CommonProxy
 import net.minecraft.util.ResourceLocation
 import net.minecraft.world.biome.Biome
@@ -50,7 +53,7 @@ object ExampleTrees {
     
 
     //Populate the Biome DataBase with generation instructions
-    fun populateBiomeDataBase() {
+    private fun populateBiomeDataBase() {
 
         if (WorldGenRegistry.isWorldGenEnabled()) {
             val ironTree = TreeRegistry.findSpecies(ResourceLocation(ModConstants.MODID, "iron"))
@@ -60,7 +63,9 @@ object ExampleTrees {
             Biome.REGISTRY.forEach { biome ->
                 if (BiomeDictionary.hasType(biome, Type.MESA)) {    //We want this tree to generate in mesa biomes
                     dbase.setSpeciesSelector(biome, ironTreeSelector, Operation.REPLACE)
-                    dbase.setChanceSelector(biome, { rnd, spc, rad -> if (rnd.nextFloat() < 0.025f) EnumChance.OK else EnumChance.UNHANDLED }, Operation.SPLICE_BEFORE)
+                    dbase.setChanceSelector(biome, { rnd, spc, rad ->
+                        if (rnd.nextFloat() < 0.025f) EnumChance.OK else EnumChance.UNHANDLED
+                    }, Operation.SPLICE_BEFORE)
                     dbase.setDensitySelector(biome, { rnd, nd -> -1.0 }, Operation.SPLICE_BEFORE)
                 }
             }

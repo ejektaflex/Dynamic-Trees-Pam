@@ -1,7 +1,8 @@
-package com.ferreusveritas.exampletrees
+package com.ferreusveritas.exampletrees.categories
 
 import com.ferreusveritas.dynamictrees.api.TreeHelper
 import com.ferreusveritas.dynamictrees.blocks.LeavesProperties
+import com.ferreusveritas.exampletrees.ModConstants
 import com.ferreusveritas.exampletrees.blocks.BlockIronLog
 import net.minecraft.block.Block
 import net.minecraft.block.BlockColored
@@ -62,7 +63,7 @@ object ModBlocks {
         }
     }
 
-    @SubscribeEvent
+    @JvmStatic @SubscribeEvent
     fun registerBlocks(event: RegistryEvent.Register<Block>) {
         val registry = event.registry
 

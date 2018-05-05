@@ -1,15 +1,13 @@
 package com.ferreusveritas.exampletrees.blocks
 
 import com.ferreusveritas.dynamictrees.DynamicTrees
-
 import net.minecraft.block.BlockLog
-import net.minecraft.block.properties.IProperty
 import net.minecraft.block.state.BlockStateContainer
 import net.minecraft.block.state.IBlockState
 
 class BlockIronLog(name: String) : BlockLog() {
 
-    constructor() : this(name) {
+    constructor() : this("ironlog") {
         setCreativeTab(DynamicTrees.dynamicTreesTab)
     }
 
@@ -21,18 +19,18 @@ class BlockIronLog(name: String) : BlockLog() {
     }
 
     override fun createBlockState(): BlockStateContainer {
-        return BlockStateContainer(this, *arrayOf<IProperty<*>>(BlockLog.LOG_AXIS))
+        return BlockStateContainer(this, BlockLog.LOG_AXIS)
     }
 
     override fun getStateFromMeta(meta: Int): IBlockState {
 
         var iblockstate = this.defaultState
 
-        when (meta and 12) {
-            0 -> iblockstate = iblockstate.withProperty(BlockLog.LOG_AXIS, BlockLog.EnumAxis.Y)
-            4 -> iblockstate = iblockstate.withProperty(BlockLog.LOG_AXIS, BlockLog.EnumAxis.X)
-            8 -> iblockstate = iblockstate.withProperty(BlockLog.LOG_AXIS, BlockLog.EnumAxis.Z)
-            else -> iblockstate = iblockstate.withProperty(BlockLog.LOG_AXIS, BlockLog.EnumAxis.NONE)
+        iblockstate = when (meta and 12) {
+            0 -> iblockstate.withProperty(BlockLog.LOG_AXIS, BlockLog.EnumAxis.Y)
+            4 -> iblockstate.withProperty(BlockLog.LOG_AXIS, BlockLog.EnumAxis.X)
+            8 -> iblockstate.withProperty(BlockLog.LOG_AXIS, BlockLog.EnumAxis.Z)
+            else -> iblockstate.withProperty(BlockLog.LOG_AXIS, BlockLog.EnumAxis.NONE)
         }
 
         return iblockstate
@@ -55,8 +53,4 @@ class BlockIronLog(name: String) : BlockLog() {
         return i
     }
 
-    companion object {
-
-        val name = "ironlog"
-    }
 }

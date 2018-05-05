@@ -1,6 +1,7 @@
-package com.ferreusveritas.exampletrees
+package com.ferreusveritas.exampletrees.categories
 
 import com.ferreusveritas.dynamictrees.api.TreeHelper
+import com.ferreusveritas.exampletrees.ModConstants
 import net.minecraft.block.Block
 import net.minecraft.item.Item
 import net.minecraft.item.ItemBlock
@@ -19,8 +20,7 @@ object ModItems {
         itemIronLog = ItemBlock(ModBlocks.ironLog).setRegistryName(ModBlocks.ironLog.registryName!!)
     }
 
-    @JvmStatic
-    @SubscribeEvent
+    @JvmStatic @SubscribeEvent
     fun registerItems(event: RegistryEvent.Register<Item>) {
         val registry = event.registry
 
@@ -32,7 +32,7 @@ object ModItems {
         registry.registerAll(*treeItems.toTypedArray())
     }
 
-    fun makeItemBlock(block: Block): Item {
+    private fun makeItemBlock(block: Block): Item {
         return ItemBlock(block).setRegistryName(block.registryName!!)
     }
 

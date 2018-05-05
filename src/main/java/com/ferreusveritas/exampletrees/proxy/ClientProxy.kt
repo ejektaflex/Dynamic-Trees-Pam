@@ -4,9 +4,9 @@ import com.ferreusveritas.dynamictrees.api.TreeHelper
 import com.ferreusveritas.dynamictrees.api.client.ModelHelper
 import com.ferreusveritas.dynamictrees.blocks.BlockDynamicLeaves
 import com.ferreusveritas.dynamictrees.blocks.BlockDynamicSapling
-import com.ferreusveritas.exampletrees.ModBlocks
 import com.ferreusveritas.exampletrees.ModConstants
-import com.ferreusveritas.exampletrees.ModTrees
+import com.ferreusveritas.exampletrees.categories.ModBlocks
+import com.ferreusveritas.exampletrees.categories.ModTrees
 import net.minecraft.item.Item
 import net.minecraft.world.ColorizerFoliage
 

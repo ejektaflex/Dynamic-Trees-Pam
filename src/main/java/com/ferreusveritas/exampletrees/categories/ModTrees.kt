@@ -1,9 +1,10 @@
-package com.ferreusveritas.exampletrees
+package com.ferreusveritas.exampletrees.categories
 
 import com.ferreusveritas.dynamictrees.api.TreeBuilder
 import com.ferreusveritas.dynamictrees.systems.dropcreators.DropCreatorHarvest
 import com.ferreusveritas.dynamictrees.trees.Species
 import com.ferreusveritas.dynamictrees.trees.TreeFamily
+import com.ferreusveritas.exampletrees.ModConstants
 import com.ferreusveritas.exampletrees.trees.TreeIron
 import net.minecraft.block.BlockNewLeaf
 import net.minecraft.block.BlockPlanks
