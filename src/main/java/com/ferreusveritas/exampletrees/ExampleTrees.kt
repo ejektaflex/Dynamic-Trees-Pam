@@ -18,8 +18,14 @@ import net.minecraftforge.fml.common.SidedProxy
 import net.minecraftforge.fml.common.event.FMLInitializationEvent
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent
 
-@Mod(modid = ModConstants.MODID, version = ModConstants.VERSION, dependencies = "after:dynamictrees;")
-class ExampleTrees {
+@Mod(modid = ModConstants.MODID, version = ModConstants.VERSION, dependencies = "after:dynamictrees;", modLanguageAdapter = ModConstants.ADAPTER)
+object ExampleTrees {
+
+    @Instance(ModConstants.MODID)
+    var instance: ExampleTrees? = null
+
+    @SidedProxy(clientSide = "com.ferreusveritas.exampletrees.proxy.ClientProxy", serverSide = "com.ferreusveritas.exampletrees.proxy.CommonProxy")
+    var proxy: CommonProxy? = null
 
     //Run before anything else. Read your config, create blocks, items, etc.
     @EventHandler
@@ -62,13 +68,5 @@ class ExampleTrees {
 
     }
 
-    companion object {
-
-        @Instance(ModConstants.MODID)
-        var instance: ExampleTrees? = null
-
-        @SidedProxy(clientSide = "com.ferreusveritas.exampletrees.proxy.ClientProxy", serverSide = "com.ferreusveritas.exampletrees.proxy.CommonProxy")
-        var proxy: CommonProxy? = null
-    }
 
 }
